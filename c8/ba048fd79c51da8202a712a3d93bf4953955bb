@@ -1,0 +1,66 @@
+_sass/custom/console.scss
+  s_29bc664625e82b::t_ed74562f866fd7 1-80
+_layouts/staffer.html
+  s_29bc664625e82b::t_bd93ea1b733201 27-47
+assets/js/consola.js
+  s_29bc664625e82b::t_5a257d11d4675c 648
+  s_29bc664625e82b::t_70c6b138db0885 929
+  s_29bc664625e82b::t_aec8709d8f26a7 1337
+  s_29bc664625e82b::t_eec4ea49718d2a 1302
+  s_29bc664625e82b::t_2d6235afab1381 821
+  s_29bc664625e82b::t_0846424b5374df 1237-1244
+  s_29bc664625e82b::t_0f335766dfa8e3 1-647,649-820,822-924,926-928,930-1236,1245-1301,1303-1336,1338-1744
+  s_29bc664625e82b::t_f0fe7f4c74ebf0 925
+assets/images/certs/ckad.svg
+  s_29bc664625e82b::t_23541928ac1241 1
+assets/images/certs/kcsa.svg
+  s_29bc664625e82b::t_23541928ac1241 1
+_includes/console.html
+  s_29bc664625e82b::t_c5d0f21c033429 1-36
+_config.yml
+  s_29bc664625e82b::t_30c42f46e38e07 22,42-54,124-125
+consola.md
+  s_29bc664625e82b::t_6596117eb1925a 1-38
+_lectures/01-contenedores-y-spring-boot.md
+  s_29bc664625e82b::t_30c42f46e38e07 6
+assets/images/certs/kcna.svg
+  s_29bc664625e82b::t_23541928ac1241 1
+assets/slides/README.md
+  s_29bc664625e82b::t_c873c73e1d7070 3-32,35,38,40-41
+assets/images/certs/cka.svg
+  s_29bc664625e82b::t_23541928ac1241 1
+_sass/custom/custom.scss
+  s_29bc664625e82b::t_30c42f46e38e07 10
+_includes/lecture-card.html
+  s_29bc664625e82b::t_30c42f46e38e07 20,27-29,46,50,69-72
+  s_29bc664625e82b::t_b05d1315b07775 73
+_sass/custom/staffer.scss
+  s_29bc664625e82b::t_6d5620c0116cf2 46-71
+_staffers/marco-tula.md
+  s_29bc664625e82b::t_f8db1bba6ffb9a 9-17
+_staffers/sebastian.md
+  s_29bc664625e82b::t_d16dc8aa750aaf 9-17
+assets/images/certs/pca.svg
+  s_29bc664625e82b::t_3894732c2e59c1 1
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "c8ba048fd79c51da8202a712a3d93bf4953955bb",
+  "prompts": {},
+  "humans": {
+    "h_fe03d8619f57ba": {
+      "author": "vallit0 <evallecyt@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_29bc664625e82b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "93333434-adcb-45bc-a6ac-2476bea959e5",
+        "model": "claude-fable-5-1"
+      },
+      "human_author": "vallit0 <evallecyt@gmail.com>"
+    }
+  }
+}
