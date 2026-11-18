@@ -1,0 +1,19 @@
+# Requiere ingress-nginx instalado en el clúster (ver la clase 3). Cualquier *.localtest.me resuelve a 127.0.0.1.
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: catalogo
+  namespace: softav
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: catalogo.localtest.me
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: catalogo
+                port:
+                  name: http

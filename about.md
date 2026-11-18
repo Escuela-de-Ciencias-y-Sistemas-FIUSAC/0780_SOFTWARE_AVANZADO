@@ -26,7 +26,7 @@ Durante un Laboratorio se hablará sobre el patrón y sobre la tecnología desar
 
 ## Recursos
 
-Las slides completas del curso y el contenido se encuentra en esta página con el objetivo de hacerlo atemporal. 
+Las slides completas del curso y el contenido se encuentra en esta página con el objetivo de hacerlo atemporal. Están en la sección de [Slides]({{ '/lectures/' | relative_url }}), con los manifiestos y comandos de cada clase, y en [Recursos]({{ '/recursos/' | relative_url }}) hay una lista de herramientas y laboratorios gratuitos para practicar. 
 
 ## Calificaciones
 

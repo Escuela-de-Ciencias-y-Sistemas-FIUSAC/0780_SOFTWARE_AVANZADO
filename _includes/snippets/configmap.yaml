@@ -1,0 +1,22 @@
+# Configuración (no sensible) y secretos (sensibles) separados. Ambos llegan al Pod como variables de entorno.
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: catalogo-config
+  namespace: softav
+data:
+  APP_SALUDO: "Hola desde el ConfigMap"
+  SPRING_PROFILES_ACTIVE: "k8s"
+  JAVA_TOOL_OPTIONS: "-XX:MaxRAMPercentage=75.0"
+---
+# stringData es solo para la demo. En un proyecto real el Secret se crea con kubectl o un gestor externo
+# y NUNCA se versiona en Git.
+apiVersion: v1
+kind: Secret
+metadata:
+  name: catalogo-db
+  namespace: softav
+type: Opaque
+stringData:
+  DB_USER: catalogo
+  DB_PASSWORD: cambia-esto

@@ -1,0 +1,69 @@
+.main-content .lecture,
+.lecture {
+  @extend %card;
+  padding-bottom: $sp-4;
+
+  .lecture-header {
+    padding-top: $sp-4;
+  }
+
+  h2.lecture-title {
+    @extend .text-gamma;
+    margin-top: 0;
+  }
+
+  h1.lecture-title {
+    margin-top: 0;
+  }
+
+  .lecture-meta {
+    @extend .text-small;
+    margin-bottom: $sp-3;
+
+    .label {
+      margin-right: $sp-2;
+    }
+
+    .lecture-date {
+      margin-right: $sp-2;
+    }
+  }
+
+  // 16:9 responsive container for the embedded slides (PDF, Google Slides, reveal.js...)
+  .lecture-slides {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%;
+    overflow: hidden;
+    border-radius: $border-radius;
+    background: $code-background-color;
+
+    iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+  }
+
+  .lecture-actions {
+    margin: $sp-3 0;
+
+    .btn {
+      margin-right: $sp-2;
+    }
+  }
+
+  .lecture-body {
+    > h2:first-child,
+    > h3:first-child {
+      margin-top: $sp-2;
+    }
+  }
+
+  details {
+    margin-top: $sp-4;
+  }
+}

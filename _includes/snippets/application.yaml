@@ -1,0 +1,30 @@
+# src/main/resources/application.yaml
+# Actuator expone /actuator/health/liveness y /actuator/health/readiness para las probes.
+server:
+  shutdown: graceful
+
+spring:
+  application:
+    name: catalogo
+  lifecycle:
+    timeout-per-shutdown-phase: 20s
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus
+  endpoint:
+    health:
+      probes:
+        enabled: true
+      show-details: always
+  health:
+    livenessstate:
+      enabled: true
+    readinessstate:
+      enabled: true
+
+# Configuración externalizada: llega del ConfigMap como variable de entorno, con un valor por defecto.
+app:
+  saludo: ${APP_SALUDO:Hola desde el default}

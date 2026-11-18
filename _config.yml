@@ -36,6 +36,38 @@ aux_links:
     - 'https://www.linkedin.com/in/sebastianvallebances'
   
 footer_content:
+github_repo: 'https://github.com/Escuela-de-Ciencias-y-Sistemas-FIUSAC/0780_SOFTWARE_AVANZADO'
+# Raw URL of the snippets folder, so students can `kubectl apply -f` straight from the repo
+snippets_raw_url: 'https://raw.githubusercontent.com/Escuela-de-Ciencias-y-Sistemas-FIUSAC/0780_SOFTWARE_AVANZADO/main/_includes/snippets'
+
+# Just the Docs features used by the lecture pages
+enable_copy_code_button: true
+mermaid:
+  version: "10.9.1"
+callouts_level: quiet
+callouts:
+  note:
+    title: Nota
+    color: blue
+  tip:
+    title: Tip
+    color: green
+  warning:
+    title: Cuidado
+    color: yellow
+  exam:
+    title: En el examen CKAD
+    color: purple
+  pending:
+    title: Pendiente
+    color: grey-dk
+
+# Sidebar section listing every lecture page
+just_the_docs:
+  collections:
+    lectures:
+      name: Clases
+      nav_fold: true
 
 # Collections for website data
 collections:
@@ -43,6 +75,9 @@ collections:
   modules:
   schedules:
   announcements:
+  lectures:
+    output: true
+    permalink: /clases/:name/
 # Default layouts for each collection type
 defaults:
   - scope:
@@ -68,6 +103,11 @@ defaults:
       type: announcements
     values:
       layout: announcement
+  - scope:
+      path: ''
+      type: lectures
+    values:
+      layout: lecture
 
 compress_html:
   clippings: all

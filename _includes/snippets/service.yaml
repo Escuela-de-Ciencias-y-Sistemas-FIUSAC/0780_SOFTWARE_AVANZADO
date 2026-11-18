@@ -1,0 +1,14 @@
+# El Service encuentra a los Pods por labels. Si el selector no coincide, el Service no tiene endpoints.
+apiVersion: v1
+kind: Service
+metadata:
+  name: catalogo
+  namespace: softav
+spec:
+  type: ClusterIP
+  selector:
+    app: catalogo
+  ports:
+    - name: http
+      port: 80
+      targetPort: http

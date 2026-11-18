@@ -1,0 +1,64 @@
+{%- comment -%}
+  Renders one lecture as a card.
+  Used by _layouts/lecture.html (the lecture's own page) and by lectures.md
+  (every lecture inline, the same way calendar.md renders every module).
+
+  Parameters:
+    lecture (document): a document from the _lectures collection.
+    body (string): the rendered HTML content of that document.
+    standalone (boolean): true when rendering the lecture's own page.
+
+  Front matter read from the lecture:
+    slides (string): PDF path under the site (e.g. /assets/slides/01.pdf) or a
+                     full embed URL (Google Slides "Publicar en la web", Canva, etc.).
+    code (string): URL to the folder with the code used in class.
+    manifests (list): file names inside _includes/snippets/ that can be applied with kubectl.
+    week, date, tags: shown in the card header.
+{%- endcomment -%}
+{%- assign lecture = include.lecture -%}
+{%- assign slides_src = "" -%}
+{%- if lecture.slides -%}
+  {%- if lecture.slides contains "://" -%}
+    {%- assign slides_src = lecture.slides -%}
+  {%- else -%}
+    {%- assign slides_src = lecture.slides | relative_url -%}
+  {%- endif -%}
+{%- endif -%}
+<div class="lecture" id="{{ lecture.title | slugify }}">
+<div class="lecture-header">
+{%- if include.standalone -%}
+<h1 class="lecture-title">{{ lecture.title }}</h1>
+{%- else -%}
+<h2 class="lecture-title no_anchor"><a href="{{ lecture.url | relative_url }}">{{ lecture.title }}</a></h2>
+{%- endif -%}
+<p class="lecture-meta">
+{%- if lecture.week %}<span class="label label-blue">Semana {{ lecture.week }}</span>{% endif -%}
+{%- if lecture.date %}<span class="lecture-date">{{ lecture.date | date: "%d/%m/%Y" }}</span>{% endif -%}
+{%- if lecture.tags %}{% for tag in lecture.tags %}<span class="label label-purple">{{ tag }}</span>{% endfor %}{% endif -%}
+</p>
+</div>
+{%- if slides_src != "" -%}
+<div class="lecture-slides">
+<iframe src="{{ slides_src }}" title="Slides: {{ lecture.title }}" loading="lazy" allowfullscreen></iframe>
+</div>
+<p class="lecture-actions">
+<a class="btn btn-primary" href="{{ slides_src }}" target="_blank" rel="noopener">Abrir slides</a>
+{%- if lecture.code %} <a class="btn btn-outline" href="{{ lecture.code }}" target="_blank" rel="noopener">Código de la clase</a>{% endif -%}
+</p>
+{%- else -%}
+<blockquote class="pending"><p>Las slides de esta clase aún no están publicadas. Agrega la ruta del PDF o la URL de embed en el campo <code>slides</code> del archivo de la clase.</p></blockquote>
+{%- if lecture.code -%}
+<p class="lecture-actions"><a class="btn btn-outline" href="{{ lecture.code }}" target="_blank" rel="noopener">Código de la clase</a></p>
+{%- endif -%}
+{%- endif -%}
+<div class="lecture-body">
+{{ include.body }}
+</div>
+{%- if lecture.manifests -%}
+<details>
+<summary>Aplicar los manifiestos de esta clase desde la terminal</summary>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% for file in lecture.manifests %}kubectl apply -f {{ site.snippets_raw_url }}/{{ file }}
+{% endfor %}</code></pre></div></div>
+</details>
+{%- endif -%}
+</div>

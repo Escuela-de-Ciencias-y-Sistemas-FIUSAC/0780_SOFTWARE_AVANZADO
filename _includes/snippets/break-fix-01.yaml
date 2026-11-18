@@ -1,0 +1,55 @@
+# ESCENARIO BREAK-FIX 01
+# Este manifiesto tiene varios errores intencionales. Aplícalo, diagnostica con
+# kubectl get / describe / logs y arréglalo hasta que un curl al Service responda 200.
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: catalogo-bf-config
+  namespace: softav
+data:
+  APP_SALUDO: "Hola desde break-fix"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: catalogo-bf
+  namespace: softav
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: catalogo-bf
+  template:
+    metadata:
+      labels:
+        app: catalogo-bf
+    spec:
+      containers:
+        - name: app
+          image: catalogo:1.0.O
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - configMapRef:
+                name: catalogo-bf-cfg
+          resources:
+            requests:
+              memory: 64Mi
+            limits:
+              memory: 64Mi
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: catalogo-bf
+  namespace: softav
+spec:
+  selector:
+    app: catalago-bf
+  ports:
+    - port: 80
+      targetPort: 8080
