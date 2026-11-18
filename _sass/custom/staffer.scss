@@ -43,3 +43,29 @@
     }
   }
 }
+
+// Certification badges (front matter `certifications:` on each staffer)
+.staffer .staffer-certs,
+.main-content .staffer .staffer-certs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $sp-2;
+  margin: $sp-2 0 $sp-2;
+  padding: 0;
+  list-style: none;
+
+  li {
+    margin: 0;
+  }
+
+  a {
+    display: block;
+    background-image: none;
+  }
+
+  img {
+    display: block;
+    width: auto;
+    height: 64px;
+  }
+}

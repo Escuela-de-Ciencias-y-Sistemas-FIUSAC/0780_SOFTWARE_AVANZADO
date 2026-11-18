@@ -24,6 +24,27 @@
       {%- endfor -%}
     </dl>
     {%- endif -%}
+    {%- if page.certifications -%}
+    {%- comment -%}
+      certifications (list in the staffer's front matter):
+        - name: CKAD - Certified Kubernetes Application Developer   (alt text and tooltip)
+          logo: ckad.svg            file in assets/images/certs/ or a full https:// URL
+          url: https://www.credly.com/badges/...   optional verification link
+    {%- endcomment -%}
+    <ul class="staffer-certs" aria-label="Certificaciones">
+      {%- for cert in page.certifications -%}
+      {%- assign cert_logo = cert.logo | default: "" -%}
+      {%- unless cert_logo contains "://" -%}
+      {%- assign cert_logo = "/assets/images/certs/" | append: cert_logo | relative_url -%}
+      {%- endunless -%}
+      <li>
+        {%- if cert.url -%}<a href="{{ cert.url }}" target="_blank" rel="noopener" title="{{ cert.name }}">{%- endif -%}
+        <img src="{{ cert_logo }}" alt="{{ cert.name }}" title="{{ cert.name }}" loading="lazy">
+        {%- if cert.url -%}</a>{%- endif -%}
+      </li>
+      {%- endfor -%}
+    </ul>
+    {%- endif -%}
     {{ content }}
   </div>
 </div>

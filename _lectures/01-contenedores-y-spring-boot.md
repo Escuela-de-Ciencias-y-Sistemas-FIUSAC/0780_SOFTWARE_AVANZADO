@@ -3,8 +3,7 @@ title: "Clase 1: Contenedores y Spring Boot"
 nav_order: 1
 week: 1
 tags: [Docker, Spring Boot, kind]
-# slides: /assets/slides/01-contenedores.pdf
-# slides: https://docs.google.com/presentation/d/e/XXXX/embed?start=false&loop=false
+slides: /assets/slides/01-contenedores-y-spring-boot.pdf
 code: https://github.com/Escuela-de-Ciencias-y-Sistemas-FIUSAC/0780_SOFTWARE_AVANZADO/tree/main/_includes/snippets
 ---
 

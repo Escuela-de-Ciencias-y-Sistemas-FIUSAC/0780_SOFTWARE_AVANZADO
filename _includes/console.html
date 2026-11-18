@@ -1,0 +1,36 @@
+{%- comment -%}
+  Consola del curso: terminal en el navegador (xterm.js) con un simulador de kubectl, kind y docker.
+  Uso:
+    {% include console.html %}                 en cualquier página o layout
+    {% include console.html autofocus=true %}  para que el cursor quede listo al cargar
+
+  Los manifiestos que la consola "ve" (ls, cat, kubectl apply -f) son los de _includes/snippets/
+  listados en `console_files` dentro de _config.yml. Se incrustan en <pre> ocultos; el <pre> evita que
+  el compresor de HTML del tema les quite la indentación (YAML la necesita).
+
+  Solo una consola por página: el motor busca el elemento #consola.
+{%- endcomment -%}
+<div id="consola" class="consola" data-autofocus="{% if include.autofocus %}true{% else %}false{% endif %}">
+<div class="consola-toolbar">
+<span class="consola-title">Consola del curso <span class="label label-purple">simulador</span></span>
+<span class="consola-chips">
+<button type="button" class="btn btn-outline consola-chip" data-cmd="tutorial">tutorial</button>
+<button type="button" class="btn btn-outline consola-chip" data-cmd="help">help</button>
+<button type="button" class="btn btn-outline consola-chip" data-cmd="ls">ls</button>
+<button type="button" class="btn btn-outline consola-chip" data-cmd="kind create cluster --name softav --config kind-config.yaml">crear clúster</button>
+<button type="button" class="btn btn-outline consola-reset">reiniciar</button>
+</span>
+</div>
+<div class="consola-screen" aria-label="Terminal"></div>
+<p class="consola-note">No hay un clúster real detrás: es un simulador que imita las respuestas de <code>kubectl</code>, <code>kind</code> y <code>docker</code> con los manifiestos del curso. El estado vive en memoria y se pierde al recargar la página. Para un clúster de verdad usa los <a href="{{ '/recursos/#practicar-en-el-navegador-sin-instalar-nada' | relative_url }}">playgrounds gratuitos</a>.</p>
+{%- for f in site.console_files -%}
+{%- capture fname %}snippets/{{ f }}{% endcapture -%}
+{%- capture fbody %}{% include {{ fname }} %}{% endcapture -%}
+<pre class="consola-file" data-name="{{ f }}" hidden>{{ fbody | escape }}</pre>
+{%- endfor -%}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@xterm/xterm@5.5.0/css/xterm.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/@xterm/xterm@5.5.0/lib/xterm.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/@xterm/addon-fit@0.10.0/lib/addon-fit.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
+<script defer src="{{ '/assets/js/consola.js' | relative_url }}"></script>
+</div>

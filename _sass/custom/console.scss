@@ -1,0 +1,80 @@
+// Consola del curso (_includes/console.html + assets/js/consola.js)
+.main-content .consola,
+.consola {
+  @extend %card;
+  padding: $sp-3 $sp-4 $sp-4;
+  margin: $sp-5 0;
+
+  .consola-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: $sp-2;
+    margin-bottom: $sp-3;
+  }
+
+  .consola-title {
+    font-weight: 600;
+
+    .label {
+      margin-left: $sp-2;
+      vertical-align: middle;
+    }
+  }
+
+  .consola-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $sp-1;
+
+    .btn {
+      padding: 0.15rem 0.6rem;
+      font-size: 12px;
+      line-height: 1.6;
+      margin: 0;
+    }
+  }
+
+  .consola-screen {
+    height: 400px;
+    padding: $sp-2;
+    overflow: hidden;
+    border-radius: $border-radius;
+    background: #1b1a1f;
+
+    @include mq(md) {
+      height: 480px;
+    }
+
+    .xterm {
+      height: 100%;
+    }
+
+    // el textarea oculto de xterm no debe heredar los estilos de formulario del tema
+    .xterm-helper-textarea {
+      padding: 0;
+      border: 0;
+    }
+  }
+
+  .consola-fallback {
+    margin: 0;
+    padding: $sp-4;
+    color: #e6e1e8;
+  }
+
+  .consola-note {
+    @extend .text-small;
+    margin: $sp-3 0 0;
+    color: $grey-dk-000;
+
+    code {
+      font-size: 12px;
+    }
+  }
+
+  .consola-file {
+    display: none !important;
+  }
+}

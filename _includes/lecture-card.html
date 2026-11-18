@@ -17,11 +17,15 @@
 {%- endcomment -%}
 {%- assign lecture = include.lecture -%}
 {%- assign slides_src = "" -%}
+{%- assign slides_is_pdf = false -%}
 {%- if lecture.slides -%}
   {%- if lecture.slides contains "://" -%}
     {%- assign slides_src = lecture.slides -%}
   {%- else -%}
     {%- assign slides_src = lecture.slides | relative_url -%}
+  {%- endif -%}
+  {%- if slides_src contains ".pdf" -%}
+    {%- assign slides_is_pdf = true -%}
   {%- endif -%}
 {%- endif -%}
 <div class="lecture" id="{{ lecture.title | slugify }}">
@@ -39,10 +43,11 @@
 </div>
 {%- if slides_src != "" -%}
 <div class="lecture-slides">
-<iframe src="{{ slides_src }}" title="Slides: {{ lecture.title }}" loading="lazy" allowfullscreen></iframe>
+<iframe src="{{ slides_src }}{% if slides_is_pdf %}#view=FitH{% endif %}" title="Slides: {{ lecture.title }}" loading="lazy" allowfullscreen></iframe>
 </div>
 <p class="lecture-actions">
 <a class="btn btn-primary" href="{{ slides_src }}" target="_blank" rel="noopener">Abrir slides</a>
+{%- if slides_is_pdf %} <a class="btn btn-outline" href="{{ slides_src }}" download>Descargar PDF</a>{% endif -%}
 {%- if lecture.code %} <a class="btn btn-outline" href="{{ lecture.code }}" target="_blank" rel="noopener">Código de la clase</a>{% endif -%}
 </p>
 {%- else -%}
@@ -60,5 +65,10 @@
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% for file in lecture.manifests %}kubectl apply -f {{ site.snippets_raw_url }}/{{ file }}
 {% endfor %}</code></pre></div></div>
 </details>
+{%- endif -%}
+{%- if include.standalone and lecture.console -%}
+<h2 id="practica-en-la-consola">Practica en la consola</h2>
+<p>Los manifiestos de esta clase ya están cargados en el simulador: escribe <code>ls</code> para verlos{% if lecture.manifests %} y <code>kubectl apply -f {{ lecture.manifests | first }}</code> para empezar{% endif %}. Más detalles en la página <a href="{{ '/consola/' | relative_url }}">Consola</a>.</p>
+{% include console.html %}
 {%- endif -%}
 </div>
