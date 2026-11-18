@@ -1,6 +1,6 @@
 ---
-name: Kevin Lin
-role: Instructor
+name: MSc. (PhD. Candidate) Marco Tulio Aldana
+role: Proffessor
 email: me@example.com
 website: https://kevinl.info
 photo: kevin.jpg
