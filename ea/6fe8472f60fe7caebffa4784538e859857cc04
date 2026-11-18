@@ -1,0 +1,14 @@
+_staffers/sebastian.md
+  h_fe03d8619f57ba 7-8
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "ea6fe8472f60fe7caebffa4784538e859857cc04",
+  "prompts": {},
+  "humans": {
+    "h_fe03d8619f57ba": {
+      "author": "vallit0 <evallecyt@gmail.com>"
+    }
+  }
+}
