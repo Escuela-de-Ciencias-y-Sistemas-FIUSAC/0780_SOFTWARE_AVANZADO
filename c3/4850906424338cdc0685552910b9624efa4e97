@@ -1,0 +1,16 @@
+_staffers/marco-tula.md
+  h_fe03d8619f57ba 3
+staff.md
+  h_fe03d8619f57ba 13,18
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "c34850906424338cdc0685552910b9624efa4e97",
+  "prompts": {},
+  "humans": {
+    "h_fe03d8619f57ba": {
+      "author": "vallit0 <evallecyt@gmail.com>"
+    }
+  }
+}
