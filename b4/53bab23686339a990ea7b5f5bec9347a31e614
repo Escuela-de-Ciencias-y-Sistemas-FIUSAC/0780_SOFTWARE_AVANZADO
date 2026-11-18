@@ -1,0 +1,20 @@
+_config.yml
+  h_fe03d8619f57ba 26,31-37
+_schedules/weekly.md
+  h_fe03d8619f57ba 37-49,65-77
+_staffers/sebastian.md
+  h_fe03d8619f57ba 2-6,9
+_staffers/marco-tula.md
+  h_fe03d8619f57ba 2-3
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "b453bab23686339a990ea7b5f5bec9347a31e614",
+  "prompts": {},
+  "humans": {
+    "h_fe03d8619f57ba": {
+      "author": "vallit0 <evallecyt@gmail.com>"
+    }
+  }
+}
